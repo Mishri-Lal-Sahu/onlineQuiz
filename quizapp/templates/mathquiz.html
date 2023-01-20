@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Online Quiz</title>
+    <style>
+        *{margin:0px;padding:0px;}
+        #menu{background-color:#24d92475;width:auto;height:40px;}
+        #nav_left ul{list-style:none; float: left;}
+        #nav_left ul li{margin-top:10px;display:inline-block; }
+        #nav_left ul li a{text-decoration:none;color:black;margin-left:15px; font-size: 20px;}
+        #nav_left ul li a:hover{background-color: green;text-shadow:0 2px white;}
+        #nav_right ul{list-style:none; float:right}
+        #nav_right ul li{margin-top:10px;display:inline-block;}
+        #nav_right ul li a{text-decoration:none;color:black;margin-right:15px; font-size: 20px;}
+        #nav_right ul li a:hover{background-color: green;text-shadow:0 2px white;}
+        #main{margin:0 auto;background-color:white;height:auto;width:800px;border-radius:10px;}
+        .option{margin-left:40px;font-size:20px;margin-bottom:10px;padding:10px;}
+        .question{margin-left:5px;}
+        a:hover{background-color:blue; }
+    </style>
+</head>
+<body bgcolor="green">
+    <div id="menu">
+        <navigation id="nav_left"><ul>
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <li><a href="{% url 'aboutus' %}">About Us</a></li>
+            <li><a href="{% url 'contactus' %}">Contact Us</a></li>
+        </ul></navigation>
+         {% if name %}
+        <navigation id="nav_right"><ul>
+            <li ><a style="font-size: 24px; display: block;color: azure;"> Name-{{name}}</a></li>
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+        </ul></navigation>
+        {% endif %}
+
+    </div>
+    <div id="main">
+        <center><u><h1 style="font-style:italic;font-size: 60px;text-shadow: 0 3px red;">Mathmatics Quiz</h1></u></center>
+        <form action="{% url 'mqresult' %}" method="post">
+            {% csrf_token %}
+            <center><i><h3 style="font-size:20px">There are five question .You must be attemp all questions </h3></i></center>
+            {% if msg %}
+                <p style="text-align: center;color: red;background-color: midnightblue;height: 22px;margin: 10px;padding: 13px;font-size: 20px;">{{msg}}</p>
+            {% endif %}
+            <h1 class="question">Q1. What is the sum of 2+2 ?</h1><br>
+            <div class="option">
+                 <input type="radio" name="a1" value="a" required>(a) &nbsp 4<br>
+                 <input type="radio" name="a1" value="b" required>(b) &nbsp 45<br>
+                 <input type="radio" name="a1" value="c" required>(c) &nbsp 67<br>
+                 <input type="radio" name="a1" value="d" required>(d) &nbsp 76<br>
+            </div>
+            <h1 class="question">Q2. If a=5 and b=67 than c=b/a ?</h1><br>
+            <div class="option">
+                 <input type="radio" name="a2" value="a" required>(a) &nbsp 45<br>
+                 <input type="radio" name="a2" value="b" required>(b) &nbsp 34<br>
+                 <input type="radio" name="a2" value="c" required>(c) &nbsp 13.40<br>
+                 <input type="radio" name="a2" value="d" required>(d) &nbsp 56<br>
+            </div>
+            <h1 class="question">Q3. If a=5 and b=67 than c=b*a  ?</h1><br>
+            <div class="option">
+                 <input type="radio" name="a3" value="a" required>(a) &nbsp 4<br>
+                 <input type="radio" name="a3" value="b" required>(b) &nbsp 335<br>
+                 <input type="radio" name="a3" value="c" required>(c) &nbsp 87<br>
+                 <input type="radio" name="a3" value="d" required>(d) &nbsp 470<br>
+            </div>
+            <h1 class="question">Q4. If a=5 and b=67 than c=b-a ?</h1><br>
+            <div class="option">
+                 <input type="radio" name="a4" value="a" required>(a) &nbsp 4<br>
+                 <input type="radio" name="a4" value="b" required>(b) &nbsp 47<br>
+                 <input type="radio" name="a4" value="c" required>(c) &nbsp 62<br>
+                 <input type="radio" name="a4" value="d" required>(d) &nbsp 76<br>
+            </div>
+            <h1 class="question">Q5. If a=5 , b=67 and c=23 than d=b+a+c ?</h1><br>
+            <div class="option">
+                 <input type="radio" name="a5" value="a" required>(a) &nbsp 4<br>
+                 <input type="radio" name="a5" value="b" required>(b) &nbsp 42<br>
+                 <input type="radio" name="a5" value="c" required>(c) &nbsp 64<br>
+                 <input type="radio" name="a5" value="d" required>(d) &nbsp 95<br>
+            </div>
+            <center><input type="submit" value="Submit" style="background-color:blue; width:700px;border-radius:5px;height:30px;"/></center>
+        </form>
+    </div>
+</body>
+</html>

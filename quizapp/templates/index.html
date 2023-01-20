@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Quiz</title>
+    <style>
+        *{ margin:0px;padding:0px;}
+        #header{width:auto;height:80px;}
+        #logo{font-style:italic;font-size: 80px;text-shadow: 0 3px red;}
+        #menu{background-color:#24d92475;width:auto;height:40px;}
+        #nav_left ul{list-style:none; float: left;}
+        #nav_left ul li{margin-top:10px;display:inline-block; }
+        #nav_left ul li a{text-decoration:none;color:black;margin-left:15px; font-size: 20px;}
+        #nav_left ul li a:hover{background-color: green;text-shadow:0 2px white;}
+        #nav_right ul{list-style:none; float:right}
+        #nav_right ul li{margin-top:10px;display:inline-block;}
+        #nav_right ul li a{text-decoration:none;color:black;margin-right:15px; font-size: 20px;}
+        #nav_right ul li a:hover{background-color: green;text-shadow:0 2px white;}
+        #description{width:900px;height:280px;margin-top:25px; border-radius:10px;}
+        #main{width:800px;height:547px;margin-top:20px;}
+        #main_left{width:300px;height:200px;border-radius: 20px;margin-top: 50px;float: left;margin-left:50px;}
+        #main_right{background-color: white;width:300px;height:200px;border-radius: 20px;margin-top: 50px;float: right;margin-right:50px;}
+        #main_bottom_left{background-color: white;width:300px;height:200px;border-radius: 20px;margin-top: 50px;float: left;margin-left:50px;}
+        #main_bottom_right{background-color: white;width:300px;height:200px;border-radius: 20px;margin-top: 50px;float: right;margin-right:50px;}
+        .mybtn{margin-top: 40px;font-size: 20px;background-color: salmon; position: relative;top:108px}
+        .mybtn:hover{transform:translateX(2px);background-color:red;}
+        .h_1{margin-top: 20px;color: red;position: relative;top: 59px;text-shadow: 1px 1px black;}
+        #footer{background-color:#24d92475;width:auto;height:100px;}
+        #footer ul{list-style:none;}
+        #footer ul li{margin-top:40px;display:inline-block; }
+        #footer ul li a{text-decoration:none;color:black;margin-right:30px;font-size: 20px;}
+        #footer ul li a:hover{background-color: green;text-shadow:0 2px white;}
+    </style>
+</head>
+<body bgcolor="green">
+    {% if msg %}
+    <script>
+        alert('{{msg}}');
+    </script>
+        {% endif %}
+    <div id="menu">
+        <navigation id="nav_left"><ul>
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <li><a href="{% url 'aboutus' %}">About Us</a></li>
+            <li><a href="{% url 'contactus' %}">Contact Us</a></li>
+        </ul></navigation>
+         {% if not name %}
+        <navigation id="nav_right"><ul>
+            <li><a href="{% url 'registration' %}">Registration</a></li>
+            <li><a href="{% url 'login' %}">Login</a></li>
+        </ul></navigation>
+        {% else %}
+        <navigation id="nav_right"><ul>
+            <li ><a style="font-size: 24px; display: block;color: azure;"> Name-{{name}}</a></li>
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+        </ul></navigation>
+        {% endif %}
+
+    </div>
+
+    <div id="header">
+        <center><h1 id="logo">Online Quiz</h1></center>
+    </div>
+    <center>
+        <div id="description">
+            <p style="font-size:25px;margin-top: 34px;">Hii,This is online quiz competition.<br>Here you can play quiz and see your result.<br>here are many types of quizes like Mathmatics quiz, computer quiz, science quiz and GK quizes.<br>These all quizes are very simple<br>
+            each questions have four options but the correct answer is one of four options<br>Thanks for visiting on my website </p>
+        </div>
+        <div id="main">
+            <div id="main_left" {% load static %} style="background-image:url('{% static 'gk.jpg'%}');background-size: cover;">
+                <h1 class="h_1">GK Quiz</h1>
+                <button class="mybtn" onclick="window.location.href='{% url 'gkquiz' %}'">Play Quiz</button>
+            </div>
+            <div id="main_right" style="background-image:url('{% static 'math.jpg' %}');background-size: cover;">
+                <h1 class="h_1">Math Quiz</h1>
+                <button class="mybtn" onclick="window.location.href='{% url 'mathquiz' %}'">Play Quiz</button>
+            </div>
+            <div id="main_bottom_left" style="background-image:url('{% static 'computer.jpg'%}');background-size: cover;">
+                <h1 class="h_1">Computer Quiz</h1>
+                <button class="mybtn" onclick="window.location.href='{% url 'computerquiz' %}'">Play Quiz</button>
+            </div>
+            <div id="main_bottom_right" style="background-image:url('{% static 'science.jpg'%}');background-size: cover;">
+                <h1 class="h_1">Science Quiz</h1>
+                <button class="mybtn" onclick="window.location.href='{% url 'sciencequiz' %}'">Play Quiz</button>
+            </div>
+        </div>
+    </center>
+    <div id="footer">
+        <center>
+            <ul>
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="#">Term and conditions</a></li>
+                <li><a href="#">Disclaimer</a></li>
+                <li><a href="#">FAQ</a></li>
+            </ul>
+        </center>
+    </div>
+</body>
+</html>

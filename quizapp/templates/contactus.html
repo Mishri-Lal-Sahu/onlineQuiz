@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Online Quiz</title>
+    <style>
+        *{margin:0px;padding:0px;}
+        #menu{background-color:#24d92475;width:auto;height:40px;}
+        #nav_left ul{list-style:none; float: left;}
+        #nav_left ul li{margin-top:10px;display:inline-block; }
+        #nav_left ul li a{text-decoration:none;color:black;margin-left:15px; font-size: 20px;}
+        #nav_left ul li a:hover{background-color: green;text-shadow:0 2px white;}
+        #nav_right ul{list-style:none; float:right}
+        #nav_right ul li{margin-top:10px;display:inline-block;}
+        #nav_right ul li a{text-decoration:none;color:black;margin-right:15px; font-size: 20px;}
+        #nav_right ul li a:hover{background-color: green;text-shadow:0 2px white;}
+        a:hover{background-color:blue; }
+        #main{margin:0 auto;background-color:white;height:auto;width:800px;border-radius:10px;}
+    </style>
+</head>
+<body bgcolor="green">
+    <div id="menu">
+        <navigation id="nav_left"><ul>
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <li><a href="{% url 'aboutus' %}">About Us</a></li>
+        </ul></navigation>
+         {% if name %}
+        <navigation id="nav_right"><ul>
+            <li ><a style="font-size: 24px; display: block;color: azure;"> Name-{{name}}</a></li>
+            <li><a href="{% url 'logout' %}">Logout</a></li>
+        </ul></navigation>
+        {% endif %}
+    </div>
+    <center>
+        <div id="main">
+            <h1>You can contact us by many way <br>like-<br>
+            &nbsp; &nbsp; whatsapp-  +91 8419892041<br>
+            Gmail-   engineermishrilalsahu@gmail.com</h1>
+        </div>
+    </center>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en"> <head>
+    <meta charset="UTF-8">
+    <title>Online Quiz</title>
+    <style>
+        #main{width:400px;height:300px;margin:0 auto;margin-top:100px;border:1px solid white; background-color:black;}
+        #main h1{color:red;text-align:center;}
+        input{border-inline:none;}
+    </style>
+</head>
+<body bgcolor="green">
+    <div id="main">
+     <a href="{% url 'index' %}" style="color:red;font-size:20px; width:50px;">Home</a>
+        <h1>Login Here..</h1>
+        {% if msg1 %}
+        <p style="text-align:center;color:red;">{{msg1}}</p>
+        {% endif %}
+        <form action="{% url 'logcode' %}" method="post">
+            {% csrf_token %}
+            <table style="margin:0 auto;width:80%;">
+                <tr><td style="color:white;">Enter Username</td><td><input type="text" name="uname"></td></tr>
+                <tr><td style="color:white;">Enter Password </td><td><input type="password" name="password"></td></tr>
+                <tr><td></td><td><input type="submit" value="login" style="background-color:red;"> </td></tr>
+            </table>
+        </form>
+        <h3 style="text-align:center; color:red;">If you are not registered?<a href="{% url 'registration' %}">Click Here</a></h3>
+    </div>
+</body>
+</html>
